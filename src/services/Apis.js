@@ -14,7 +14,6 @@ export const userVerify = async(data) => {
 }
 
 export const getUserData = async(token) => {
-    return await commonrequest("GET", `${BACKEND_URL}/user/data`, null, {
-        "Authorization": `Bearer ${token}`
-    });
+    return await commonrequest("GET", `${BACKEND_URL}/user/data`
+    );
 }

@@ -1,0 +1,27 @@
+.dashboard-container {
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgb(86, 184, 151);
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .card {
+    background: #168d87;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(155, 118, 118, 0.1);
+    margin-top: 20px;
+  }
+  
+  .card h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+  
+  .card p {
+    margin: 5px 0;
+    font-size: 15px;
+  }
+  

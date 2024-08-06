@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserData } from '../services/Apis'; // Ensure this path is correct
+import axios from 'axios';
+import '../styles/Dashboard.css'; 
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
 
   const userValid = async () => {
     let token = localStorage.getItem("userdbtoken");
     if (token) {
       try {
-        const response = await getUserData(token);
+        const response = await axios.get("http://localhost:4002/user/data", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
         if (response.status === 200) {
-          setUserData(response.data);
+          setUserData(response.data); // Assuming response.data is an array of users
         } else {
           navigate("*");
         }
@@ -30,17 +36,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="dashboard-container">
       <h1>Dashboard</h1>
-      {userData ? (
-        <div className="card">
-          <h2>{userData.name}</h2>
-          <p>Email: {userData.email}</p>
-          <p>Role: {userData.role}</p>
-          {/* Add more fields as necessary */}
-        </div>
+      {userData.length > 0 ? (
+        userData.map(user => (
+          <div key={user._id} className="card">
+            <h2>{user.fname}</h2>
+            <p>Email: {user.email}</p>
+            <p>User: {user.fname}</p>
+            {/* Add more fields as necessary */}
+          </div>
+        ))
       ) : (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       )}
     </div>
   );
