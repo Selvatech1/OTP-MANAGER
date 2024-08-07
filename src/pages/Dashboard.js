@@ -44,6 +44,7 @@ const Dashboard = () => {
             <h2>{user.fname}</h2>
             <p>Email: {user.email}</p>
             <p>User: {user.fname}</p>
+            <p>Id: {user._id}</p>
             {/* Add more fields as necessary */}
           </div>
         ))
