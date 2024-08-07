@@ -11,7 +11,7 @@ const Dashboard = () => {
     let token = localStorage.getItem("userdbtoken");
     if (token) {
       try {
-        const response = await axios.get("http://localhost:4002/user/data", {
+        const response = await axios.get("https://server-yazi.onrender.com/user/data", {
           headers: {
             Authorization: `Bearer ${token}`
           }
